@@ -6,8 +6,6 @@ ARG OPENSHIFT_CLIENT_VERSION=4.4.13
 ## Required in order to avoid ct "ascii codec can't encode character" error
 ENV PYTHONIOENCODING=utf-8
 
-COPY ubi.repo /etc/yum.repos.d/
-
 ## Install helm and yq
 RUN curl -sL  https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -o /usr/local/bin/yq && \
     chmod -R 775 /usr/local/bin/yq
