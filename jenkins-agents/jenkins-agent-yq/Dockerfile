@@ -12,14 +12,6 @@ RUN curl -sL  https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq
 
 ## Install oc and kubectl
 RUN curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/${OPENSHIFT_CLIENT_VERSION}/openshift-client-linux-${OPENSHIFT_CLIENT_VERSION}.tar.gz \
-    | tar zxf - -C /usr/local/bin oc kubectl 
-
-## Persistently enable software collections
-RUN mkdir /usr/share/container-scripts
-COPY scl_enable /usr/share/container-scripts
-RUN chmod 555 /usr/share/container-scripts/scl_enable
-ENV BASH_ENV=/usr/share/container-scripts/scl_enable \
-    ENV=/usr/share/container-scripts/scl_enable \
-    PROMPT_COMMAND=". /usr/share/container-scripts/scl_enable"
+    | tar zxf - -C /usr/local/bin oc kubectl
 
 USER 1001
